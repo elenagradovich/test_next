@@ -1,0 +1,42 @@
+@import 'mixins';
+@import 'varaibles';
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, 'Montserrat', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: $desktop-width;
+  padding: 48px 0;
+}
+
+@media (min-width: $tablet-width) {
+  .container {
+    padding: 65px 0;
+  }
+}
+
+

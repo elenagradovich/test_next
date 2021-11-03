@@ -1,0 +1,67 @@
+@import 'mixins';
+@import 'varaibles';
+
+$color-border: #DBDBDB;
+$color-border-hover: #A7A7A7;
+$color-checkbox: #D0D0D0;
+$checkbox-side: 18px;
+
+
+.title {
+  @include title();
+  margin-bottom: 10px;
+}
+
+.items {
+  padding: 0;
+  margin: 0 0 40px;
+}
+
+.item {
+  display: flex;
+  position: relative;
+  @include text();
+  line-height: 1;
+  margin-bottom: 10px;
+  padding-left: 28px;
+  min-height: $checkbox-side;
+
+  & label {
+    display: inline-flex;
+    align-items: flex-end;
+  }
+}
+
+.customCheckbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  top: 0;
+  left: 0;
+
+  & + label::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: $checkbox-side;
+    height: $checkbox-side;
+    border: 1px solid $color-checkbox;
+    border-radius: 4px;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+
+  &:checked + label::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: $checkbox-side;
+    height: $checkbox-side;
+    background-size: contain;
+    background-position: center;
+    background-image: url("../public/checked.svg");
+    z-index: 2;
+  }
+}

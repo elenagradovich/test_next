@@ -1,0 +1,38 @@
+@import 'mixins';
+@import 'varaibles';
+
+$borderTopColor: #E6E6E6;
+$borderCardColor: #E6E6E6;
+$colorBtn: #DBDBDB;
+$borderRadius: 8px;
+
+.items {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.item:not(:first-child) {
+  border-top : 1px solid $borderTopColor;
+}
+
+@media (min-width: 1000px) {
+  .items {
+    grid-template-columns: repeat(auto-fit, minmax(242px, 242px));
+    grid-column-gap: 24px;
+    grid-row-gap: 24px;
+  }
+
+  .item {
+    flex-direction: column;
+    border: 1px solid $borderCardColor;
+    border-radius: $cardBorderRadius;
+    width: 242px;
+  }
+}

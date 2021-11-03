@@ -1,0 +1,15 @@
+@import "varaibles";
+
+.filters {
+  display: flex;
+  flex-direction: column;
+
+  &Range {
+    margin-bottom: 0;
+  }
+
+  &Price {
+    margin-bottom: 26px;
+  }
+}
+

@@ -1,0 +1,46 @@
+$color-range: rgba(219, 219, 219, 1);
+$color-cursor: rgba(27, 27, 27, 1);
+$color-fill-bar: rgba(255, 104, 28, 1);
+$color-empty-bar: rgba(215, 215, 215, 1);
+
+
+.rangeControls {
+  width: 100%;
+  position: relative;
+}
+
+.rangeScale {
+  width: 100%;
+  height: 2px;
+  background: $color-empty-bar;
+  border-radius: 4px;
+}
+
+.rangeBar {
+  width: 80%;
+  height: 2px;
+  border-radius: 4px;
+  background: $color-fill-bar;
+}
+
+.rangeToggle {
+  position: absolute;
+  top: -6px;
+  width: 14px;
+  height: 14px;
+  background-color: rgba(255, 255, 255, 1);
+  border: 4px solid $color-cursor;
+  border-radius: 50%;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &Min {
+    left: 0;
+  }
+
+  &Max {
+    left: 80%;
+  }
+}

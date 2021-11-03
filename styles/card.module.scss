@@ -1,0 +1,140 @@
+@import 'mixins';
+@import 'varaibles';
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 20px;
+  height: 100%;
+}
+
+.imgWrapper {
+  position: relative;
+  width: 124px;
+  height: 124px;
+  margin-right: 17px;
+}
+
+.img {
+  border-radius: $cardBorderRadius;
+  width: 124px;
+  height: 124px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.title {
+  @include text;
+}
+
+.price {
+  position: relative;
+  @include title;
+  margin-bottom: 16px;
+  margin-top: auto;
+}
+
+.new {
+  display: none;
+}
+
+.secondHand {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 15px;
+  color: #1B1B1B;
+}
+
+.favorite {
+  position: absolute;
+  display: flex;
+  bottom: 30px;
+  right: 12px;
+  width: 19.5px;
+  height: 17px;
+  background-image: url("../public/hurt.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+
+.btnToCart {
+  background: transparent;
+  @include text;
+  padding: 9px 20px 10px;
+  border: 1px solid #DBDBDB;
+  border-radius: 8px;
+  align-self: flex-start;
+
+}
+
+@media (min-width: 1000px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    border-radius: $cardBorderRadius;
+  }
+
+  .wrapper {
+    position: relative;
+    padding: 12px 16px 16px;
+    border-bottom-left-radius: $cardBorderRadius;
+    border-bottom-right-radius: $cardBorderRadius;
+  }
+
+  .imgWrapper {
+    width: 100%;
+    height: 242px;
+    border-top-left-radius: $cardBorderRadius;
+    border-top-right-radius: $cardBorderRadius;
+    margin-right: 0;
+  }
+
+  .new {
+    position: absolute;
+    display: flex;
+    top: 12px;
+    left: 12px;
+    color: #FFFFFF;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 140%;
+    background-color: #44C477;
+    border-radius: 26px;
+    padding: 5px 10px;
+  }
+
+  .img {
+    margin: 0;
+    width: 242px;
+    height: 242px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: $cardBorderRadius;
+    border-top-right-radius: $cardBorderRadius;
+  }
+
+
+  .title {
+    margin-bottom: 12px;
+  }
+
+  .price {
+    margin-bottom: 18px;
+  }
+}

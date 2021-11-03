@@ -1,0 +1,57 @@
+@import 'mixins';
+@import 'varaibles';
+
+$color-border: #DBDBDB;
+$color-border-hover: #A7A7A7;
+
+
+.priceTitle {
+  @include title();
+  margin-bottom: 12px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  height: 42px;
+  width: 224px;
+  margin-bottom: 24px;
+  font-size: 0;
+  border: 1px solid $color-border;
+  border-radius: 4px;
+
+  &:hover {
+    border-color: $color-border-hover;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 42px;
+    background: $color-border;
+    transform: translate(-50%, -50%);
+  }
+
+  & label {
+    height: 100%;
+    width: 50%;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+
+  & input {
+    @include text();
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-family: inherit;
+    outline-color: $color-border-hover;
+  }
+}
