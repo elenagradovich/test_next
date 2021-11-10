@@ -1,9 +1,15 @@
+import {useEffect, useState} from 'react'
 import styles from '../styles/layout.module.scss'
 import Filters from './filters';
 import Catalog from './catalog';
 
-export default function Layout() {
-  const productsAmount = 143;
+export default function Layout({products}) {
+  const [productsAmount, setProductsAmount] = useState(0)
+  
+  useEffect(() => {
+     setProductsAmount(products?.length > 0 ? products.length : 0) 
+  }, [products]);
+
   return (
     <div className={`container ${styles.wrapper}`}>
       <aside className={styles.aside}>
@@ -12,8 +18,10 @@ export default function Layout() {
         <Filters />
       </aside>
       <main className={styles.main}>
-        <Catalog />
+        {products && <Catalog data={products} />}
       </main>
     </div>
   )
 }
+
+

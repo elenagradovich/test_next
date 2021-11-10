@@ -10,8 +10,6 @@ export default function Card ({ data }) {
         className={styles.img}
         alt="card image"
         src={image.desktop.webp_x2}
-        width={124}
-        height={124}
         layout="fill"
       />
       {is_new && <span className={styles.new}>Новинка</span>}

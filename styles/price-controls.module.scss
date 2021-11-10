@@ -53,5 +53,7 @@ $color-border-hover: #A7A7A7;
     border: none;
     font-family: inherit;
     outline-color: $color-border-hover;
+    cursor: url('../public/cursor.svg'), auto;
+    border-radius: 4px;
   }
 }
