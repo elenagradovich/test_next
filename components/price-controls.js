@@ -14,33 +14,32 @@ export default function PriceControls () {
   const changePriceHandler = (e) => {
     const nameField = e.currentTarget.name;
     const value = +e.currentTarget.value;
-    
-    switch (nameField) {
-      case 'minPrice':
-        if(value && value <= MAX_PRICE && value >=MIN_PRICE) {
-          if(priceMax) {
+    if((value || value===0) && value <= MAX_PRICE && value >=MIN_PRICE) {
+      switch (nameField) {
+        case 'minPrice':
+          if(priceMax || priceMax===MIN_PRICE) {
             value <= priceMax && setPriceMin(value)
             return
           }
           setPriceMin(value)
-        }
-        break;
-      case 'maxPrice': 
-        if(value && value <= MAX_PRICE && value >=MIN_PRICE) {
-          if(priceMin) {
+          break;
+          
+        case 'maxPrice': 
+          if(priceMin || priceMin===MIN_PRICE) {
             value >= priceMin && setPriceMax(value);
             return
           }
-          setPriceMin(value)
-        }
-        break;
-      default:
-        throw new Error();
+          setPriceMax(value)
+          break;
+        
+        default:
+          throw new Error();
+      }
     }
   }
 
   useEffect(() => {
-    if(priceMin) {
+    if(priceMin || priceMin===MIN_PRICE) {
       setFilterParams({...filterParams, 'price[min]': priceMin.toString()})
     } else {
       delete filterParams['price[min]']; 
@@ -48,7 +47,7 @@ export default function PriceControls () {
   }, [priceMin])
 
   useEffect(() => {
-    if(priceMax) {
+    if(priceMax || priceMax===MIN_PRICE) {
       setFilterParams({...filterParams, 'price[max]': priceMax.toString()})
     } else {
       delete filterParams['price[max]']; 
