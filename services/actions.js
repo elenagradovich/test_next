@@ -19,7 +19,7 @@ export const getObektivList = async (params) => {
     const a = Object.keys(params)
     .map((key) => {
       const keyValue = params[key];
-      return Array.isArray(keyValue) ? `${key}[]=${keyValue.join(',')}`: `${key}=${keyValue}`
+      return Array.isArray(keyValue) ? keyValue.map((item) =>`${key}[]=${item}`).join('&') : `${key}=${keyValue}`
     })
     URL = URL + "?" + a.join('&')
   }

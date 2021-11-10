@@ -11,7 +11,7 @@ export default function Brands () {
     const id = e.currentTarget.value;
 
     if(activeBrands?.length > 0 && activeBrands.findIndex((item) => item === id) > 0) {
-      setActiveBrands(activeBrands.filter((item) => item !== id))
+      setActiveBrands([activeBrands.filter((item) => item !== id)])
     } else {
       setActiveBrands([...activeBrands, id])
     }
@@ -19,11 +19,12 @@ export default function Brands () {
 
   useEffect(() => {
     if(activeBrands.length > 0) {
+      debugger
       setFilterParams({...filterParams, 'brands':activeBrands})
     } else {
       delete filterParams['brands']; 
     }
-  }, [activeBrands, filterParams, setFilterParams]);
+  }, [activeBrands]);
 
   return (
     <>

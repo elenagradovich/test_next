@@ -3,11 +3,10 @@ import PriceControls from './price-controls';
 import Brands from './brands';
 
 export default function Filters () {
-  
   return (
-    <section className={styles.filters}>
+    <form className={styles.filters}>
       <PriceControls  />
-      {/* <Brands  /> */}
-    </section>
+      <Brands  />
+    </form>
   )
 }
