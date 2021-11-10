@@ -1,6 +1,7 @@
 import styles from '../styles/price-controls.module.scss'
 import {useContext, useEffect, useState} from 'react';
 import { Context } from '../pages';
+import {removeObjOptions} from '../utils/common'
 
 const MAX_PRICE = 9999999999;
 const MIN_PRICE = 0;
@@ -13,12 +14,13 @@ export default function PriceControls () {
 
   const changePriceHandler = (e) => {
     const nameField = e.currentTarget.name;
-    const value = +e.currentTarget.value;
+    const value = e.currentTarget.value !== "" ? +e.currentTarget.value : e.currentTarget.value;
+    
     if((value || value===0) && value <= MAX_PRICE && value >=MIN_PRICE) {
       switch (nameField) {
         case 'minPrice':
           if(priceMax || priceMax===MIN_PRICE) {
-            value <= priceMax && setPriceMin(value)
+            (value <= priceMax) && setPriceMin(value)
             return
           }
           setPriceMin(value)
@@ -35,6 +37,14 @@ export default function PriceControls () {
         default:
           throw new Error();
       }
+      return
+    }
+
+    switch (nameField) {
+      case 'minPrice':
+        setPriceMin(null)
+      case 'maxPrice': 
+        setPriceMax(null)
     }
   }
 
@@ -42,7 +52,7 @@ export default function PriceControls () {
     if(priceMin || priceMin===MIN_PRICE) {
       setFilterParams({...filterParams, 'price[min]': priceMin.toString()})
     } else {
-      delete filterParams['price[min]']; 
+      removeObjOptions(filterParams, 'price[min]', setFilterParams)
     }
   }, [priceMin])
 
@@ -50,7 +60,7 @@ export default function PriceControls () {
     if(priceMax || priceMax===MIN_PRICE) {
       setFilterParams({...filterParams, 'price[max]': priceMax.toString()})
     } else {
-      delete filterParams['price[max]']; 
+      removeObjOptions(filterParams, 'price[max]', setFilterParams)
     }
   }, [priceMax])
 

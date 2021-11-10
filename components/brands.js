@@ -2,6 +2,7 @@ import styles from '../styles/brand.module.scss'
 import {useEffect, useState, useContext} from 'react';
 import { brandList } from '../public/mock_data'
 import { Context } from '../pages';
+import {removeObjOptions} from '../utils/common'
 
 export default function Brands () {
   const [filterParams, setFilterParams] = useContext(Context);
@@ -21,7 +22,7 @@ export default function Brands () {
     if(activeBrands.length > 0) {
       setFilterParams({...filterParams, 'brands':activeBrands})
     } else {
-      delete filterParams['brands']; 
+      removeObjOptions(filterParams, 'brands', setFilterParams)
     }
   }, [activeBrands]);
 
